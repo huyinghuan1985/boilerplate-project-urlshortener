@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const dns = require('dns');
+// const dns = require('dns');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -20,10 +20,10 @@ app.get('/', function (req, res) {
 // 获取要被转换的url
 app.post('/api/shorturl', (req, res) => {
   const original_url = req.body.url;
-  dns.lookup(original_url, (error, address) => {
-    if (error) return console.log(error);
-    console.log(address);
-  });
+  // dns.lookup(original_url, (error, address) => {
+  //   if (error) return console.log(error);
+  //   console.log(address);
+  // });
   if (!/https*:\/\/.+\..+/.test(original_url))
     return res.json({ error: 'Invalid URL' });
   let short_url = shorturls.indexOf(original_url);
